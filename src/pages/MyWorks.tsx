@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { config } from "../config";
+import { withBasePath } from "../utils/assetPath";
 import "./MyWorks.css";
 
 const MyWorks = () => {
@@ -22,7 +23,7 @@ const MyWorks = () => {
             <>
               <div className="myworks-card-number">0{index + 1}</div>
               <div className="myworks-card-image">
-                <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                <img src={withBasePath(project.image)} alt={project.title} loading="lazy" decoding="async" />
               </div>
               <div className="myworks-card-info">
                 <h3>{project.title}</h3>

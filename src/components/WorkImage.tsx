@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { withBasePath } from "../utils/assetPath";
 
 interface Props {
   image: string;
@@ -40,7 +41,7 @@ const WorkImage = (props: Props) => {
             <div className="work-link">
               <MdArrowOutward />
             </div>
-            <img src={props.image} alt={props.alt} loading="lazy" decoding="async" />
+            <img src={withBasePath(props.image)} alt={props.alt} loading="lazy" decoding="async" />
             {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
           </a>
         ) : (
@@ -54,7 +55,7 @@ const WorkImage = (props: Props) => {
             <div className="work-link">
               <MdArrowOutward />
             </div>
-            <img src={props.image} alt={props.alt} loading="lazy" decoding="async" />
+            <img src={withBasePath(props.image)} alt={props.alt} loading="lazy" decoding="async" />
             {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
           </Link>
         )
@@ -65,7 +66,7 @@ const WorkImage = (props: Props) => {
           onMouseLeave={() => setIsVideo(false)}
           data-cursor={"disable"}
         >
-          <img src={props.image} alt={props.alt} loading="lazy" decoding="async" />
+          <img src={withBasePath(props.image)} alt={props.alt} loading="lazy" decoding="async" />
           {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
         </div>
       )}

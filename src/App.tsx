@@ -1,7 +1,5 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./App.css";
 
 const CharacterModel = lazy(() => import("./components/Character"));
@@ -11,8 +9,10 @@ const Play = lazy(() => import("./pages/Play"));
 import { LoadingProvider } from "./context/LoadingProvider";
 
 const App = () => {
+  const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route
           path="/"
@@ -45,8 +45,6 @@ const App = () => {
           }
         />
       </Routes>
-      <Analytics />
-      <SpeedInsights />
     </BrowserRouter>
   );
 };
